@@ -1,0 +1,116 @@
+<div class="container">
+  <form [formGroup]="userDrugForm" class="m-3" (ngSubmit)="submit()">
+    <container-element [ngSwitch]="userDrugId">
+      <div *ngSwitchCase="0" class="mb-3">
+        <label for="drugId" class="form-label">Drug</label>
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          formControlName="drugId"
+          name="userdrug"
+          id="drugId"
+        >
+          <option *ngFor="let drug of drugsList; index as i" [value]="drug.id">
+            {{ drug.en_Name }}
+          </option>
+        </select>
+      </div>
+    </container-element>
+
+    <div class="mb-3">
+      <label for="expireDate" class="form-label">Expire Date</label>
+      <input
+        #dateInput
+        type="date"
+        data-date-format="yyyy-MM-dd"
+        formControlName="expireDate"
+        class="form-control"
+        id="expireDate"
+        name="expireDate"
+      />
+      <div
+        class="alert alert-warning"
+        [hidden]="expireDate?.valid || expireDate?.untouched"
+      >
+        <small *ngIf="expireDate?.errors?.['required']">
+          Expire Date is required
+        </small>
+        <small *ngIf="expireDate?.errors?.['pattern']">
+          Expire Date must be 3 letters at least,
+          <b>{{expireDate?.errors?.['pattern'].actualValue}}</b> dosen't match.
+        </small>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="quantity" class="form-label">Quantity</label>
+      <!-- [class.is-invalid]="fullName?.invalid"
+      [class.is-valid]="fullName?.valid" -->
+      <input
+        type="text"
+        formControlName="quantity"
+        class="form-control"
+        id="quantity"
+        name="quantity"
+      />
+      <div
+        class="alert alert-warning"
+        [hidden]="quantity?.valid || quantity?.untouched"
+      >
+        <small *ngIf="quantity?.errors?.['required']">
+          quantity is required
+        </small>
+        <small *ngIf="quantity?.errors?.['pattern']">
+          quantity must be number
+          <b>{{quantity?.errors?.['pattern'].actualValue}}</b> dosen't match.
+        </small>
+      </div>
+    </div>
+
+    <container-element [ngSwitch]="userDrugId">
+      <div *ngSwitchCase="0" class="update">
+        <label class="image-label" for="profileImage">Upload Drug Image </label>
+        <input
+          type="file"
+          class="image-input"
+          id="profileImage"
+          (change)="onImageChange($event)"
+        />
+        <img #imageForUserDrug id="image" [src]="userDrugImage" alt="" />
+      </div>
+      <div *ngSwitchDefault class="update">
+        <label class="image-label" for="profileImage">Update Drug Image </label>
+        <input
+          type="file"
+          class="image-input"
+          id="profileImage"
+          (change)="onImageChange($event)"
+        />
+        <img #imageForUserDrug id="image" [src]="userDrugImage" alt="" />
+      </div>
+    </container-element>
+
+    <container-element [ngSwitch]="userDrugId">
+      <div class="mb-4">
+        <span *ngSwitchCase="0" class="btn btn-success" (click)="getLocation()">
+          Get your location
+        </span>
+        <span *ngSwitchDefault class="btn btn-success" (click)="getLocation()">
+          Update your location
+        </span>
+      </div>
+    </container-element>
+
+    <!-- <div class="alert alert-warning" *ngIf="ifError">
+      <small> {{ errorMessage }} </small>
+    </div> -->
+
+    <button
+      [disabled]="userDrugForm.invalid || !isGetLocation"
+      type="submit"
+      class="btn btn-primary"
+    >
+      Submit
+    </button>
+  </form>
+</div>

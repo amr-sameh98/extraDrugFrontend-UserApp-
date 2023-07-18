@@ -1,0 +1,86 @@
+<div class="container">
+  <button
+    type="button"
+    class="btn btn-primary mt-4 mb-3"
+    (click)="AddNewDrug()"
+  >
+    Add New Drug
+  </button>
+
+  <div class="row">
+    <div *ngFor="let userDrug of userDrugsList; index as i" class="col-3">
+      <div class="card" style="width: 18rem">
+        <img
+          [src]="'http://localhost:5250/' + userDrug.photos[0].apiPath"
+          class="card-img-top"
+          style="width: 18rem; height: 18rem"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ userDrug.drug.en_Name }}</h5>
+          <p class="card-text">
+            Expire Date :
+            {{ userDrug.expireDate }}
+          </p>
+          <p class="card-text">
+            Quantity :
+            {{ userDrug.quantity }}
+          </p>
+          <p>
+            <i
+              style="cursor: pointer"
+              class="fs-3 text-info mx-1 bi bi-pencil-square"
+              [routerLink]="['/userDrugForm', userDrug.id, 'edit']"
+            ></i>
+            <span (click)="deleteDrug(userDrug.id)">
+              <i
+                style="cursor: pointer"
+                class="fs-3 text-danger mx-1 bi bi-trash3"
+              ></i>
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>English Name</th>
+        <th>Parcode</th>
+        <th>Purpose</th>
+        <th>Company</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let userDrug of userDrugsList; index as i">
+        <td>{{ userDrug.drug.en_Name }}</td>
+        <td>{{ userDrug.drug.parcode }}</td>
+        <td>{{ userDrug.drug.purpose }}</td>
+        <td>
+          {{ userDrug.drug.companyName }}
+        </td>
+        <td>
+          <i
+            style="cursor: pointer"
+            class="fs-3 text-info mx-1 bi bi-pencil-square"
+            [routerLink]="['/userDrugForm', userDrug.id, 'edit']"
+          ></i>
+          <span (click)="deleteDrug(userDrug.id)">
+            <i
+              style="cursor: pointer"
+              class="fs-3 text-danger mx-1 bi bi-trash3"
+            ></i>
+          </span>
+        </td>
+        <td>
+          <span>{{ userDrug.id }}</span>
+        </td>
+        <td>
+          <span>{{ userDrug.drug.id }}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
+</div>
