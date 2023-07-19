@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div *ngFor="let userDrug of allUsersDrugsList; index as i" class="col-3">
+      <div class="card mt-5" style="width: 18rem">
+        <img
+          [src]="
+            'http://localhost:5250/' +
+            userDrug.photos[userDrug.photos.length - 1].apiPath
+          "
+          class="card-img-top"
+          style="width: 18rem; height: 18rem"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ userDrug.drug.en_Name }}</h5>
+          <p class="card-text">
+            Expire Date:
+            {{ userDrug.expireDate }}
+          </p>
+          <p class="card-text">
+            Quantity:
+            {{ userDrug.quantity }}
+          </p>
+          <a
+            style="width: 60%"
+            class="btn btn-primary m-auto d-block"
+            [routerLink]="[
+              '/drugRequest',
+              userDrug.id,
+              userDrug.userId,
+              userDrug.quantity
+            ]"
+            >Request this drug</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

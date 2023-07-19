@@ -28,6 +28,17 @@
             >My Drugs</a
           >
         </li>
+        <li class="nav-item">
+          <a
+            class="nav-link p-2 p-lg-3"
+            aria-current="page"
+            [routerLink]="['allUsersDrugs']"
+            [routerLinkActive]="'active'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            [hidden]="!isUserLogged"
+            >All Drugs</a
+          >
+        </li>
       </ul>
       <a
         class="btn rounded-pill main-btn me-3"
