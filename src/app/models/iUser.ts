@@ -4,5 +4,5 @@ export interface IUser {
   username: string;
   email: string;
   password: string;
-  PhoneNumber: string;
+  phoneNumber: string;
 }

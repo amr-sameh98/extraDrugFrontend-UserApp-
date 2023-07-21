@@ -2,7 +2,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { IUserDrug } from '../models/iUserDrug';
+import { environment } from 'src/environments/environment.development';
+import { IUser } from '../models/iUser';
+import { Ipassword } from '../models/ipssword';
 
 @Injectable({
   providedIn: 'root'
@@ -23,24 +25,25 @@ export class UserService {
   }
 
   getAllUsers() {
-    return this.httpClient.get<any>("http://localhost:5250/api/user");
+    return this.httpClient.get<any>(`${environment.baseURL}/api/user`);
   }
 
   getUserByID(userId: number) {
-    return this.httpClient.get<any>(`http://localhost:5250/api/user/${userId}`);
+    return this.httpClient.get<any>(`${environment.baseURL}/api/user/${userId}`);
+  }
+  getUserprofile() {
+    return this.httpClient.get<any>(`${environment.baseURL}/api/user/profile`);
+  }
+  changePassword(newpass: Ipassword) {
+    return this.httpClient.patch<any>(`${environment.baseURL}/api/user/change-password`, newpass , this.httpOption);
+  }
+  editUserData(newData: IUser) {
+    return this.httpClient.put<any>(`${environment.baseURL}/api/user`, newData , this.httpOption);
+  }
+  uploadUserPhoto(photo: any) {
+    return this.httpClient.patch<any>(`${environment.baseURL}/api/user/photo`, photo );
   }
 
-  // editUserDrug(drugId: number , drug: IUserDrug) {
-  //   return this.httpClient.put<any>(`http://localhost:5250/api/user/drugs/${drugId}` , JSON.stringify(drug) , this.httpOption);
-  // }
-
-  // addNewUserDrug(newDrug : IUserDrug) {
-  //   return this.httpClient.post<IUserDrug>("http://localhost:5250/api/user/drugs", newDrug , this.httpOption);
-  // }
-
-  // deleteUserDrug(drugId: number) {
-  //   return this.httpClient.delete<IUserDrug>(`http://localhost:5250/api/user/drugs/${drugId}`, this.httpOption);
-  // }
 
 
 }
