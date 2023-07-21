@@ -17,10 +17,10 @@ export class UserProfileComponent implements OnInit {
   userNewImage : any
   //@ViewChild('imageForUserProfile') img : any;
 
-  
+
   fileName: string='';
   selecetdFile : any;
-  
+
   constructor(
      private router:Router,
      private toastr:ToastrService,
@@ -40,7 +40,7 @@ export class UserProfileComponent implements OnInit {
     this.fileName = event?.target.files[0].name;
     //Creating img
     if (event.target.files && event.target.files[0]) {
-    
+
     //set image model
     let files = event.srcElement.files
     console.log(files)
@@ -53,6 +53,7 @@ export class UserProfileComponent implements OnInit {
       this.formData.append("file", files[i] );
     }
     console.log(this.formData);
+
 
   }
 
@@ -82,13 +83,14 @@ export class UserProfileComponent implements OnInit {
       }
 
     })
+
   }
   getUserprofile(){
     this.userOperationsService.getUserprofile().subscribe({
-    next:(data)=>{ 
+    next:(data)=>{
       this.userData=data.data;
       this.userProfilePicture=environment.baseURL+data.data.photo;
-      
+
 
     //console.log(this.userData);
     //console.log(this.userProfilePicture);
@@ -96,7 +98,7 @@ export class UserProfileComponent implements OnInit {
     },error(err) {
     console.log(err)
     },
-  
+
     })
   }
 

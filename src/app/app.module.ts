@@ -40,7 +40,7 @@ import { ContactComponent } from './components/contact/contact.component';
     UserDrugFormComponent,
     FooterComponent,
     UserProfileComponent,
-    EditUserProfileComponent
+    EditUserProfileComponent,
     AllUsersDrugsComponent,
     DrugRequestComponent,
     DrugSearchComponent,
