@@ -20,6 +20,10 @@ import { DrugSearchComponent } from './components/drug-search/drug-search.compon
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { DrugReqAsRecieverComponent } from './components/drug-req-as-reciever/drug-req-as-reciever.component';
+import { DrugReqAsDonerComponent } from './components/drug-req-as-doner/drug-req-as-doner.component';
+import { HomeComponent } from './components/home/home.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 
 @NgModule({
@@ -33,7 +37,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     FooterComponent,
     AllUsersDrugsComponent,
     DrugRequestComponent,
-    DrugSearchComponent
+    DrugSearchComponent,
+    DrugReqAsRecieverComponent,
+    DrugReqAsDonerComponent,
+    HomeComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

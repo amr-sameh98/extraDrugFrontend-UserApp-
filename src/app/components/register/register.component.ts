@@ -69,8 +69,12 @@ export class RegisterComponent {
       console.log(res);
       let token = res.data.token ;
       let role = res.data.roles[0]
+      let userId = res.data.userId ;
+
       localStorage.setItem("token", token);
       localStorage.setItem("role", role);
+      localStorage.setItem("userId", userId);
+
 
       this.authService.isloggedSubject.next(true);
       this.isUserLogged= this.authService.isUserLogged;

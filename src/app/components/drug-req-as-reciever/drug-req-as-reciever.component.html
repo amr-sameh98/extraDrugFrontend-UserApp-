@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div
+      *ngFor="let drugReq of drugsReqsAsRecieverList; index as i"
+      class="col-3"
+    >
+      <div class="card mt-5" style="width: 18rem">
+        <img
+          [src]="
+            'http://localhost:5250/' +
+            drugReq.requestItems[0].userDrug.photos[0].apiPath
+          "
+          class="card-img-top"
+          style="width: 18rem; height: 18rem"
+        />
+        <div class="card-body">
+          <h2 class="card-title">
+            {{ drugReq.requestItems[0].userDrug.drug.en_Name }}
+          </h2>
+          <p class="card-text">
+            Doner Name:
+            {{ drugReq.donor.firstName + " " + drugReq.donor.lastName }}
+          </p>
+          <p class="card-text">
+            Doner phone:
+            {{ drugReq.donor.phoneNumber }}
+          </p>
+          <p class="card-text">
+            Expire date:
+            {{ drugReq.requestItems[0].userDrug.expireDate }}
+          </p>
+          <p class="card-text">
+            Quantity:
+            {{ drugReq.requestItems[0].quantity }}
+          </p>
+          <p class="card-text">
+            Created at:
+            {{ drugReq.createdAt }}
+          </p>
+          <p class="card-text">
+            Request state:
+            {{ drugReq.state }}
+          </p>
+
+          <container-element [ngSwitch]="drugReq.state">
+            <button
+              *ngSwitchCase="'Pending'"
+              (click)="cancelReq(drugReq.id)"
+              class="btn btn-primary d-block m-auto w-50"
+            >
+              Cancel
+            </button>
+            <button
+              *ngSwitchCase="'Accepted'"
+              (click)="recieveReq(drugReq.id)"
+              class="btn btn-primary d-block m-auto w-50"
+            >
+              Recieved
+            </button>
+          </container-element>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

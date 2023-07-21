@@ -44,3 +44,11 @@
     height: 15px;
   }
 }
+
+a {
+  text-decoration: none;
+  /* color: var(--green-color); */
+  color: rgba(255, 255, 255, 0.5);
+
+  /* color: transparent; */
+}

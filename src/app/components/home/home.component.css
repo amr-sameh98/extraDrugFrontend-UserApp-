@@ -1,0 +1,29 @@
+/* Start Landing */
+.landing {
+  /* background-color: var(--dark-color); */
+  background-image: url("../../../assets/1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* min-height: calc(100vh - 72px); */
+  min-height: 80vh;
+}
+.landing-photo {
+  max-height: 60vh;
+  width: 98.9vw;
+}
+.title {
+  /* margin-bottom: 400px; */
+  background-color: var(--dark-color);
+  border-radius: 30px;
+}
+.landing-info {
+  /* margin-bottom: 350px; */
+}
+
+/* End Landing */
+
+.serv {
+  padding-top: 100px;
+  padding-bottom: 50px;
+}

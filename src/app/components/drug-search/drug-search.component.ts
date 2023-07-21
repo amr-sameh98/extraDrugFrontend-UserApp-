@@ -16,6 +16,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DrugSearchComponent {
   allDrugsList! : Idrug[]
+  serachedDrugs! : any[]
   drugId: any
   coordsLongitude : any
   coordsLatitude: any
@@ -38,7 +39,7 @@ export class DrugSearchComponent {
     this.drugsService.getAllDrugs().subscribe((data) => {
       // console.log(data.data);
       this.allDrugsList = data.data
-      console.log(this.allDrugsList);
+      // console.log(this.allDrugsList);
       // this.drugsCtrl.setValue(this.allDrugsList[1]);
       this.filteredDrugs.next(this.allDrugsList.slice());
       this.drugsFilterCtrl.valueChanges
@@ -49,6 +50,9 @@ export class DrugSearchComponent {
     })
 
     this.getLocation()
+
+    console.log("aam");
+
   }
 
   ngAfterViewInit() {
@@ -114,13 +118,22 @@ export class DrugSearchComponent {
 
   searchForDrug() {
 
-    console.log(this.drugId);
+    // console.log(this.drugId);
 
 
-    console.log(this.coordsLongitude);
-    console.log(this.coordsLatitude);
+    // console.log(this.coordsLongitude);
+    // console.log(this.coordsLatitude);
     this.userDrugsService.searchForUserDrug(this.drugId , this.coordsLatitude , this.coordsLongitude).subscribe((data) => {
-      console.log(data);
+      // console.log(data);
+      this.serachedDrugs = data.data
+      console.log(this.serachedDrugs);
+      for (let i = 0; i < this.serachedDrugs.length; i++) {
+        this.serachedDrugs[i].expireDate = this.serachedDrugs[i].expireDate.slice(0,10)
+        this.serachedDrugs[i].createdAt = this.serachedDrugs[i].createdAt.slice(0,10)
+
+      }
+
+      this.ngOnInit()
 
     })
   }

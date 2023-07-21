@@ -73,6 +73,7 @@ export class DrugRequestComponent implements OnInit {
     if(this.drugRequestModel.RequestItems[0].Quantity <= this.drugQuantity) {
       this.drugRequestService.addDrugRequest(this.drugRequestModel).subscribe((data) => {
         console.log(data);
+        this.router.navigate(['drugReqAsReciever'])
 
       })
     }

@@ -1,5 +1,5 @@
-<p class="drug-search">
-  <mat-form-field>
+<div class="container mt-4" style="width: 500px">
+  <mat-form-field class="row d-flex justify-content-center">
     <mat-select
       [formControl]="drugsCtrl"
       placeholder="Search for needed drug"
@@ -17,7 +17,8 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-</p>
+</div>
+
 <button
   (click)="searchForDrug()"
   class="btn btn-primary m-auto d-block"
@@ -25,6 +26,53 @@
 >
   Search
 </button>
+
+<div class="container">
+  <div class="row">
+    <div *ngFor="let userDrug of serachedDrugs; index as i" class="col-3">
+      <div class="card mt-5" style="width: 18rem">
+        <img
+          [src]="
+            'http://localhost:5250/' +
+            userDrug.photos[userDrug.photos.length - 1].apiPath
+          "
+          class="card-img-top"
+          style="width: 18rem; height: 18rem"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ singleSelect.value.en_Name }}</h5>
+          <p class="card-text">
+            Expire Date:
+            {{ userDrug.expireDate }}
+          </p>
+          <p class="card-text">
+            Quantity:
+            {{ userDrug.quantity }}
+          </p>
+          <p class="card-text">
+            Distance from you:
+            {{ userDrug.distance }}KM
+          </p>
+          <p class="card-text">
+            Created At:
+            {{ userDrug.createdAt }}
+          </p>
+          <a
+            style="width: 70%"
+            class="btn btn-primary m-auto d-block"
+            [routerLink]="[
+              '/drugRequest',
+              userDrug.id,
+              userDrug.userId,
+              userDrug.quantity
+            ]"
+            >Request this drug</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- <div class="text-center">
   <h2>aaaa</h2>
