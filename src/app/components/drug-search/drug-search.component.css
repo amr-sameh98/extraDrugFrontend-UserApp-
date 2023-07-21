@@ -1,0 +1,20 @@
+.drug-search {
+  margin: auto;
+  margin-top: 40px;
+  width: fit-content;
+}
+
+/* .cdk-overlay-container {
+  width: 300px;
+  margin: auto;
+} */
+
+.drug-select {
+  position: relative;
+}
+
+.drug-option {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

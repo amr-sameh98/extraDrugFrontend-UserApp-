@@ -17,6 +17,13 @@ import { EditUserProfileComponent } from './components/edit-user-profile/edit-us
 import { ToastrModule } from 'ngx-toastr';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AllUsersDrugsComponent } from './components/all-users-drugs/all-users-drugs.component';
+import { DrugRequestComponent } from './components/drug-request/drug-request.component';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { DrugSearchComponent } from './components/drug-search/drug-search.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -30,6 +37,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FooterComponent,
     UserProfileComponent,
     EditUserProfileComponent
+    AllUsersDrugsComponent,
+    DrugRequestComponent,
+    DrugSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +49,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ReactiveFormsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    NgxMatSelectSearchModule
   ],
   providers: [],
   bootstrap: [AppComponent]

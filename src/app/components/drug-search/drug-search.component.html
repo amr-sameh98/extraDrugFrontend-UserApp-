@@ -1,0 +1,38 @@
+<p class="drug-search">
+  <mat-form-field>
+    <mat-select
+      [formControl]="drugsCtrl"
+      placeholder="Search for needed drug"
+      #singleSelect
+      (valueChange)="setDrugId(singleSelect.value.id)"
+    >
+      <mat-option>
+        <ngx-mat-select-search
+          [formControl]="drugsFilterCtrl"
+        ></ngx-mat-select-search>
+      </mat-option>
+
+      <mat-option *ngFor="let drug of filteredDrugs | async" [value]="drug">
+        {{ drug.en_Name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</p>
+<button
+  (click)="searchForDrug()"
+  class="btn btn-primary m-auto d-block"
+  style="width: 100px"
+>
+  Search
+</button>
+
+<!-- <div class="text-center">
+  <h2>aaaa</h2>
+  <h2>aaaa</h2>
+  <h2>aaaa</h2>
+  <h2>aaaa</h2>
+  <h2>aaaa</h2>
+  <h2>aaaa</h2>
+  <h2>aaaa</h2>
+</div> -->
+<!-- <p>Selected Bank: {{ websiteCtrl.value?.name }}</p> -->

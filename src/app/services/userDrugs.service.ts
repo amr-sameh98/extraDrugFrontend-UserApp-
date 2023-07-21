@@ -17,6 +17,10 @@ export class UserDrugsService {
     };
   }
 
+  getAllUsersDrugs() {
+    return this.httpClient.get<any>(`http://localhost:5250/api/user/Drugs` , this.httpOption);
+  }
+
   addNewUserDrug(newDrug : IUserDrug) {
   return this.httpClient.post<any>("http://localhost:5250/api/user/drugs", newDrug , this.httpOption);
   }
@@ -36,7 +40,10 @@ export class UserDrugsService {
 
   addPhotoToUserDrug(drugId : any , userDrugImage : any) {
     return this.httpClient.post<any>(`http://localhost:5250/api/user/drugs/${drugId}/photos/`, userDrugImage );
+  }
 
+  searchForUserDrug(drugId : any , lat : any , lon : any) {
+    return this.httpClient.get<any>(`http://localhost:5250/api/user/drugs/search?id=${drugId}&lat=${lat}&lon=${lon}` , this.httpOption);
   }
 
 }

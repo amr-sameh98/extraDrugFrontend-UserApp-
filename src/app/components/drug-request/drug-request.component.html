@@ -1,0 +1,38 @@
+<div class="container">
+  <form [formGroup]="drugRequestForm" class="m-3" (ngSubmit)="submit()">
+    <div class="mb-3">
+      <label for="quantity" class="form-label">Quantity</label>
+      <input
+        type="text"
+        formControlName="quantity"
+        class="form-control"
+        id="quantity"
+        name="quantity"
+      />
+      <div
+        class="alert alert-warning"
+        [hidden]="quantity?.valid || quantity?.untouched"
+      >
+        <small *ngIf="quantity?.errors?.['required']">
+          quantity is required
+        </small>
+        <small *ngIf="quantity?.errors?.['pattern']">
+          quantity must be number
+          <b>{{quantity?.errors?.['pattern'].actualValue}}</b> dosen't match.
+        </small>
+      </div>
+    </div>
+
+    <div *ngIf="drugQuantityNotValid" class="alert alert-warning">
+      <small>enter allowed quantity </small>
+    </div>
+
+    <button
+      [disabled]="drugRequestForm.invalid"
+      type="submit"
+      class="btn btn-primary"
+    >
+      Submit
+    </button>
+  </form>
+</div>
