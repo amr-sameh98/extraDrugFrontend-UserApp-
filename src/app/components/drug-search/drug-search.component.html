@@ -58,6 +58,9 @@
             {{ userDrug.createdAt }}
           </p>
           <a
+            [ngClass]="{
+            'disabled':  userDrug.userId == currentUserId ? true : false,
+          }"
             style="width: 70%"
             class="btn btn-primary m-auto d-block"
             [routerLink]="[

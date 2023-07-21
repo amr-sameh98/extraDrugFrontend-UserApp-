@@ -20,6 +20,7 @@ export class DrugSearchComponent {
   drugId: any
   coordsLongitude : any
   coordsLatitude: any
+  currentUserId : any
 
 
   public drugsCtrl: FormControl = new FormControl();
@@ -36,6 +37,7 @@ export class DrugSearchComponent {
       private userDrugsService : UserDrugsService) { }
 
   ngOnInit() {
+    this.currentUserId = localStorage.getItem("userId")
     this.drugsService.getAllDrugs().subscribe((data) => {
       // console.log(data.data);
       this.allDrugsList = data.data

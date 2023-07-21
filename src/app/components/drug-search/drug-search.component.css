@@ -1,1 +1,3 @@
-
+.anchorTag {
+  filter: blur(2px);
+}
