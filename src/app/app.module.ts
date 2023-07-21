@@ -12,9 +12,13 @@ import { LoginComponent } from './components/login/login.component';
 import { UserDrugsComponent } from './components/user-drugs/user-drugs.component';
 import { UserDrugFormComponent } from './components/user-drug-form/user-drug-form.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { EditUserProfileComponent } from './components/edit-user-profile/edit-user-profile.component';
+import { ToastrModule } from 'ngx-toastr';
+import { MatCardModule } from '@angular/material/card';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AllUsersDrugsComponent } from './components/all-users-drugs/all-users-drugs.component';
 import { DrugRequestComponent } from './components/drug-request/drug-request.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { DrugSearchComponent } from './components/drug-search/drug-search.component';
 import { MatSelectModule } from '@angular/material/select';
@@ -31,6 +35,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     UserDrugsComponent,
     UserDrugFormComponent,
     FooterComponent,
+    UserProfileComponent,
+    EditUserProfileComponent
     AllUsersDrugsComponent,
     DrugRequestComponent,
     DrugSearchComponent
@@ -41,7 +47,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     CoreModule,
     HttpClientModule,
     ReactiveFormsModule,
+    ToastrModule.forRoot(),
     BrowserAnimationsModule,
+    MatCardModule,
     MatSelectModule,
     MatButtonModule,
     MatFormFieldModule,

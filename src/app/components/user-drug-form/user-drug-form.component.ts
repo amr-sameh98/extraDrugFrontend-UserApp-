@@ -117,14 +117,16 @@ export class UserDrugFormComponent {
 
 onImageChange(event: any) {
   if (event.target.files && event.target.files[0]) {
+    //image to show on upload
     let img = event.target.files[0];
     this.userDrugImage = URL.createObjectURL(img)
     this.img.nativeElement.style.display = "block"
     const reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
     // reader.addEventListener("load", () => {
     //   // localStorage.setItem("recent-image", reader.result);
     // });
-    reader.readAsDataURL(event.target.files[0]);
+    
     let files = event.srcElement.files
     if (!files) {
       return
@@ -168,6 +170,8 @@ onImageChange(event: any) {
             console.log(data);
             this.userDrugImage = this.userDrugImage.replace("blob:" , "")
             this.userDrugsService.addPhotoToUserDrug(data.data.id , this.formData).subscribe((data) => {
+              
+              this.router.navigate(['/userDrugs']);
               console.log(data);
             })
           });
@@ -178,11 +182,11 @@ onImageChange(event: any) {
           .subscribe((data) => {
             console.log(data)
             this.userDrugsService.addPhotoToUserDrug(data.data.id , this.formData).subscribe((data) => {
+              this.router.navigate(['/userDrugs']);
               console.log(data);
             })
           });
       }
-      this.router.navigate(['/userDrugs']);
     }
 
   }
