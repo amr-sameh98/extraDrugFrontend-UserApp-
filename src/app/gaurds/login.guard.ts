@@ -1,7 +1,8 @@
 import { ActivatedRouteSnapshot, CanActivate, CanActivateFn, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { UserAuthService } from '../services/user-auth.service';
+// import { UserAuthService } from '../services/user-auth.service';
 import { Injectable } from '@angular/core';
+import { UserAuthService } from '../services/userAuth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class  loginGuard implements CanActivate {
     }
     else
     {
-      // alert ('You already login ...');
+      alert ('You already login ...');
       this.router.navigate(['']);
       return false
     }

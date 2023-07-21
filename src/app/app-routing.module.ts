@@ -12,15 +12,15 @@ import { DrugReqAsRecieverComponent } from './components/drug-req-as-reciever/dr
 import { DrugReqAsDonerComponent } from './components/drug-req-as-doner/drug-req-as-doner.component';
 import { HomeComponent } from './components/home/home.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { loginGuard } from './gaurds/login.guard';
 
 
 const routes: Routes = [
   {path : '', component: HomeComponent },
   {path : 'contact', component: ContactComponent },
-
   {path : 'search', component: DrugSearchComponent ,  canActivate: [authGuard] },
-  {path : 'register' , component: RegisterComponent },
-  {path : 'login' , component: LoginComponent },
+  {path : 'register' , component: RegisterComponent ,  canActivate: [loginGuard] },
+  {path : 'login' , component: LoginComponent , canActivate: [loginGuard] },
   {path : 'allUsersDrugs' , component: AllUsersDrugsComponent ,  canActivate: [authGuard] },
   {path : 'drugReqAsReciever' , component: DrugReqAsRecieverComponent ,  canActivate: [authGuard] },
   {path : 'drugReqAsDoner' , component: DrugReqAsDonerComponent ,  canActivate: [authGuard] },

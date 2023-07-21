@@ -13,7 +13,14 @@
           class="card-img-top"
           style="width: 18rem; height: 18rem"
         />
-        <div class="card-body">
+        <div
+          class="card-body"
+          [ngClass]="{
+            'bg-danger-subtle': drugReq.state === 'Canceled',
+            'bg-success-subtle': drugReq.state === 'Recieved',
+            'bg-info-subtle': drugReq.state === 'Pending'
+          }"
+        >
           <h2 class="card-title">
             {{ drugReq.requestItems[0].userDrug.drug.en_Name }}
           </h2>

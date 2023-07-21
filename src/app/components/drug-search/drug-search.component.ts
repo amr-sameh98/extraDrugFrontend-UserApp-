@@ -118,24 +118,35 @@ export class DrugSearchComponent {
 
   searchForDrug() {
 
-    // console.log(this.drugId);
-
-
-    // console.log(this.coordsLongitude);
-    // console.log(this.coordsLatitude);
-    this.userDrugsService.searchForUserDrug(this.drugId , this.coordsLatitude , this.coordsLongitude).subscribe((data) => {
-      // console.log(data);
+    this.userDrugsService.searchForUserDrug(this.drugId , this.coordsLatitude , this.coordsLongitude).subscribe({
+      next:(data) => {
+              console.log(data);
       this.serachedDrugs = data.data
       console.log(this.serachedDrugs);
       for (let i = 0; i < this.serachedDrugs.length; i++) {
         this.serachedDrugs[i].expireDate = this.serachedDrugs[i].expireDate.slice(0,10)
         this.serachedDrugs[i].createdAt = this.serachedDrugs[i].createdAt.slice(0,10)
-
       }
-
       this.ngOnInit()
+      },
+      error:() => {
+      alert ('This Drug not found');
+      }
+    }
+    )
 
-    })
+
+
+    // this.userDrugsService.searchForUserDrug(this.drugId , this.coordsLatitude , this.coordsLongitude).subscribe((data) => {
+    //   console.log(data);
+    //   this.serachedDrugs = data.data
+    //   console.log(this.serachedDrugs);
+    //   for (let i = 0; i < this.serachedDrugs.length; i++) {
+    //     this.serachedDrugs[i].expireDate = this.serachedDrugs[i].expireDate.slice(0,10)
+    //     this.serachedDrugs[i].createdAt = this.serachedDrugs[i].createdAt.slice(0,10)
+    //   }
+    //   this.ngOnInit()
+    // })
   }
 
 }
